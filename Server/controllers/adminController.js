@@ -12,4 +12,8 @@ exports.LoginAdmin = async (req,res) =>{
         user 
     })
 }
-
+exports.createSession = async (req,res) =>{
+    return res.status(200).json({
+        message : "Session has been created "
+    })
+}
