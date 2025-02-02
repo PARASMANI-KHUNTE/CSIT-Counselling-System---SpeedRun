@@ -2,12 +2,16 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
+const connectDB = require('./config/mongodb');
+
 dotenv.config();
 app.use(cors());
 app.use(express.json());
 
+// Connect to MongoDB
+connectDB();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 
 app.get('/',(req,res)=>{
@@ -21,10 +25,8 @@ app.get("/test",(req,res)=>{
 
 
 
-const admin = require('./routes/adminRoutes')
 const student = require('./routes/studentRoutes')
 
-app.use('/api/admin',admin);
 app.use('/api/student',student);
 
 
